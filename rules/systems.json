@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "note": "EXAMPLE rule set. Copy this to ~/.design-guard/systems.json and edit it there — your own file always wins over this one, so updating the plugin cannot overwrite your rules.",
+  "ui_extensions": [".css", ".scss", ".html", ".htm", ".js", ".jsx", ".ts", ".tsx", ".vue", ".svelte", ".php"],
+  "systems": [
+    {
+      "id": "example-app",
+      "title": "Example App — a flat, token-driven system with dark mode",
+      "paths": ["code/example-app"],
+      "reference": "path/to/tokens.css",
+      "palette": ["#3b6cf6", "#2f5de0", "#22b573", "#ff8a1f", "#f0473c", "#1d2129"],
+      "min_font_px": 13,
+      "hard_min_font_px": 10,
+      "font_stack_head": "Inter",
+      "checks": ["emoji", "palette", "min_font_size", "dark_mode_hardcoded", "reduced_motion", "font_stack_head"],
+      "forbid": [
+        {
+          "pattern": "border-radius:\\s*999px",
+          "message": "badges here are square-ish (5px), not pills",
+          "severity": "error",
+          "only_selectors_matching": true
+        },
+        {
+          "pattern": "linear-gradient|radial-gradient",
+          "message": "gradients are allowed only on the brand mark",
+          "severity": "warn"
+        }
+      ]
+    },
+    {
+      "id": "example-marketing",
+      "title": "Example Marketing Site — light only, its own brand colour",
+      "paths": ["code/example-site"],
+      "palette": ["#1b9b6f", "#15805c", "#1e3240", "#556a7a"],
+      "min_font_px": 13,
+      "font_stack_head": "Inter",
+      "checks": ["emoji", "palette", "min_font_size", "font_stack_head"],
+      "skip_paths": ["assets/css/theme-"],
+      "skip_reason": "alternate themes deliberately diverge and are covered by their own test",
+      "forbid": [
+        {
+          "pattern": "#3b6cf6|#2f5de0",
+          "message": "the app's blue must never appear on the marketing site — use the brand green",
+          "severity": "error"
+        },
+        {
+          "pattern": "prefers-color-scheme:\\s*dark|\\[data-theme=.?dark",
+          "message": "this site has no dark mode",
+          "severity": "error"
+        }
+      ]
+    }
+  ]
+}

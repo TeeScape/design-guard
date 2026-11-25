@@ -1,0 +1,26 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "design-guard",
+  "description": "Design Guard: turn design-system rules written in prose into checks a tool enforces.",
+  "owner": {
+    "name": "Teerapol Kittikanjanaruk",
+    "url": "https://github.com/TeeScape"
+  },
+  "plugins": [
+    {
+      "name": "design-guard",
+      "source": "./",
+      "version": "0.1.0",
+      "description": "Enforce the design system that governs each path, for Claude Code and any other MCP client.",
+      "author": {
+        "name": "Teerapol Kittikanjanaruk"
+      },
+      "category": "development",
+      "keywords": [
+        "design-system",
+        "linter",
+        "css"
+      ]
+    }
+  ]
+}

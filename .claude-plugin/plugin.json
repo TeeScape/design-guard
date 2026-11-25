@@ -1,0 +1,26 @@
+{
+  "name": "design-guard",
+  "version": "0.1.0",
+  "displayName": "Design Guard",
+  "description": "Enforce a project's design system instead of hoping the agent remembers it. Maps a file path to the design system that governs it, then checks palette drift, emoji in the UI, type below the size floor, Thai text set too small, hard-coded colours inside dark-mode blocks, pill radii where the system wants square badges, missing prefers-reduced-motion and wrong font stacks. Rules live in an editable JSON file.",
+  "author": {
+    "name": "Teerapol Kittikanjanaruk",
+    "url": "https://github.com/TeeScape"
+  },
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "linter",
+    "css",
+    "design-tokens",
+    "mcp"
+  ],
+  "mcpServers": {
+    "design-guard": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/design-guard-server.py"
+      ]
+    }
+  }
+}
